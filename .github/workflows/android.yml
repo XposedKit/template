@@ -28,8 +28,9 @@ jobs:
         path: xposedkit
 
     - name: Publish XposedKit to local maven repository
-      run: |      
+      run: |
         cd xposedkit
+        chmod +x gradlew
         ./gradlew publishToMavenLocal
 
     - name: Grant execute permission for gradlew
