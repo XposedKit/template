@@ -33,6 +33,14 @@ jobs:
         chmod +x gradlew
         ./gradlew publishToMavenLocal
 
+    - name: Write key
+      run: |
+        echo android.storeFile='keystore.jks' >> gradle.properties
+        echo android.storePassword='${{ secrets.KEY_STORE_PASSWORD }}' >> gradle.properties
+        echo android.keyAlias='${{ secrets.ALIAS }}' >> gradle.properties
+        echo android.keyPassword='${{ secrets.KEY_PASSWORD }}' >> gradle.properties
+        echo ${{ secrets.KEY_STORE }} | base64 --decode > keystore.jks
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
