@@ -21,6 +21,17 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Checkout XposedKit repo
+      uses: actions/checkout@v4
+      with:
+        repository: XposedKit/XposedKit
+        path: xposedkit
+
+    - name: Publish XposedKit to local maven repository
+      run: |      
+        cd xposedkit
+        ./gradlew publishToMavenLocal
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
