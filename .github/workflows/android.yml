@@ -35,6 +35,7 @@ jobs:
 
     - name: Write key
       run: |
+        echo >> gradle.properties
         echo android.storeFile='keystore.jks' >> gradle.properties
         echo android.storePassword='${{ secrets.KEY_STORE_PASSWORD }}' >> gradle.properties
         echo android.keyAlias='${{ secrets.ALIAS }}' >> gradle.properties
