@@ -46,7 +46,7 @@ jobs:
         mkdir -p "$output_dir"
         cp -r ./mapping "$output_dir"
         find ./apk -type f -name "*.apk" -exec sudo cp {} "$output_dir" \;
-        echo "output=$output" >> $GITHUB_OUTPUT
+        echo "output=$output_dir" >> $GITHUB_OUTPUT
         echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
     - name: Upload artifact
